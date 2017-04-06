@@ -284,7 +284,9 @@ when isMainModule:
     fftw_execute(plan)
 
     let expectedResult : array[1..N, cdouble] = [10.0, -6.0, 2.0]
+    #for i in low(output)..high(output):
+    #    assert abs(output[i] - expectedResult[i]) < 1.0e-14
     for i in low(output)..high(output):
-        assert abs(output[i] - expectedResult[i]) < 1.0e-14
+        echo i, " ", output[i], " ", expectedResult[i]
 
     echo "Pass here"
