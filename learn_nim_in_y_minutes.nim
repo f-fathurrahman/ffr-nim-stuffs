@@ -31,4 +31,42 @@ const
   debug = true
   compileBadCode = false
 
+when compileBadCode:
+  legs = legs + 1
+  const input = readline(stdin)
+# the above lines will not compile because we define compileBadCode to false
+
+discard 1 > 2
+
+
+#
+# Procedures
+#
+
+echo("")
+echo("Now we are entering section about Procedures")
+echo("")
+
+type Answer = enum aYes, aNo
+
+proc ask(question: string): Answer =
+  echo(question, " (y,n)")
+  while true:
+    case readLine(stdin)
+    of "y", "Y", "yes", "Yes":
+      return Answer.aYes
+    of "n", "N", "no", "No":
+      return Answer.aNo
+    else:
+      echo("Please answer yes or no")
+
+var answer = ask("Are you a man?")
+
+if answer == Answer.aYes:
+  echo("You are answering yes")
+else:
+  echo("You are answering no")
+
+
+
 
